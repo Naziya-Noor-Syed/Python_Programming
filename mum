@@ -1,0 +1,42 @@
+def print_matrix(matrix):
+    for row in matrix:
+        print(row)
+
+def find_L_pattern(matrix):
+    n = len(matrix)
+    L_pattern = []
+    # Collect L pattern (first column and last row)
+    for i in range(n):
+        L_pattern.append(matrix[i][0])
+    for j in range(1, n):
+        L_pattern.append(matrix[n-1][j])
+    return L_pattern
+
+def find_reverse_L_pattern(matrix):
+    n = len(matrix)
+    reverse_L_pattern = []
+    # Collect reverse L pattern (last column and first row)
+    for j in range(n):
+        reverse_L_pattern.append(matrix[0][j])
+    for i in range(1, n):
+        reverse_L_pattern.append(matrix[i][n-1])
+    return reverse_L_pattern
+
+def find_minimum(matrix):
+    return min(min(row) for row in matrix)
+
+# Create a 10x10 matrix with values from 1 to 100
+matrix = [[i + j * 10 + 1 for i in range(10)] for j in range(10)]
+
+print("Matrix:")
+print_matrix(matrix)
+
+L_pattern = find_L_pattern(matrix)
+print("\nL Pattern:", L_pattern)
+
+reverse_L_pattern = find_reverse_L_pattern(matrix)
+print("Reverse L Pattern:", reverse_L_pattern)
+
+min_value = find_minimum(matrix)
+print("Minimum value in the matrix:", min_value)
+
